@@ -14,13 +14,13 @@
 
 ### setup 
 
-- **requirements**
+>> **requirements**
 
 * python 
 * device
 * brain 
 
-- **install**
+>> **install**
 * double click on install.bat for the first time u run. then open main.py 
 
 
