@@ -1,0 +1,5 @@
+random
+colorama
+os
+time
+requests
