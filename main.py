@@ -4,12 +4,18 @@ import time
 import requests
 import colorama 
 from colorama import Style, Fore, Back
-from fp.fp import FreeProxy
+from selenium import webdriver
 
 try:
     from fp.fp import FreeProxy
 except ModuleNotFoundError:
     os.system("pip install free-proxy")
+try:
+   from selenium import webdriver
+   from selenium.webdriver.common.proxy import *
+   from selenium.webdriver.firefox.options import Options
+except ModuleNotFoundError:
+   os.system("pip install selenium")
 
 
 
@@ -21,7 +27,7 @@ print(f"{Fore.LIGHTBLUE_EX}            ┃┃┃┃╭╮┫╰╯┫╭╮┫�
 print(f"{Fore.LIGHTCYAN_EX}            ┃╰╯┃┃┃┃╭╮┫┃┃┃╰╯┣╮╭╮╭┫┃┃┃╭╮     ")
 print(f"{Fore.LIGHTGREEN_EX}            ╰━━┻╯╰┻╯╰┻╯╰┻━━╯╰╯╰╯╰╯╰╯╰╯     ")
 print("")
-print(f"{Fore.LIGHTGREEN_EX}[0] {Fore.WHITE}mixed proxies\n{Fore.LIGHTGREEN_EX}[1] {Fore.WHITE} HTTP proxies\n{Fore.LIGHTGREEN_EX}[2] {Fore.WHITE}proxies from a country code\n{Fore.LIGHTGREEN_EX}[3] {Fore.WHITE} google proxies\n{Fore.LIGHTGREEN_EX}[4] {Fore.WHITE} anonymous proxies")
+print(f"{Fore.LIGHTGREEN_EX}[0] {Fore.WHITE}mixed proxies\n{Fore.LIGHTGREEN_EX}[1] {Fore.WHITE} HTTP proxies\n{Fore.LIGHTGREEN_EX}[2] {Fore.WHITE}proxies from a country code\n{Fore.LIGHTGREEN_EX}[3] {Fore.WHITE} google proxies\n{Fore.LIGHTGREEN_EX}[4] {Fore.WHITE} anonymous proxies\n{Fore.LIGHTGREEN_EX}[5] {Fore.WHITE} open a browser with proxy\n{Fore.LIGHTGREEN_EX}[6] {Fore.WHITE} info")
 option = input(">> ")
 
 if option == "1":
@@ -48,7 +54,7 @@ elif option == "2":
     
      
          for i in range(int(num)):
-          country=FreeProxy(country_id=[(enter)], rand=True).get()
+          country=FreeProxy(https=False, country_id=[(enter)], rand=True).get()
           file.write(country+"\n")
        print(f"{Fore.GREEN} generated {(num)} of country proxies")
     except ValueError:
@@ -69,7 +75,7 @@ elif option == "0":
     
      
          for i in range(int(num)):
-          rnd=FreeProxy(rand=True).get()
+          rnd=FreeProxy(https=False, rand=True).get()
           file.write(rnd+"\n")
        print(f"{Fore.GREEN} generated {(num)} of proxies")
     except ValueError:
@@ -91,7 +97,7 @@ elif option == "3":
     
      
          for i in range(int(num)):
-          google=FreeProxy(google=True, rand=True).get()
+          google=FreeProxy(https=False, google=True, rand=True).get()
           file.write(google+"\n")
           
        print(f"{Fore.GREEN} generated {(num)} of google proxies")
@@ -113,7 +119,7 @@ elif option == "4":
     
      
          for i in range(int(num)):
-          anm=FreeProxy(anonym=True, rand=True).get()
+          anm=FreeProxy(https=False, anonym=True, rand=True).get()
           file.write(anm+"\n")
        print(f"{Fore.GREEN} generated {(num)} of anoymous proxies")
     except ValueError:
@@ -124,10 +130,11 @@ elif option == "4":
        else:
           os.system("exit")
 
-elif option == "5":
+elif option == "6":
    os.sytem("cls")
    print(f" {Fore.GREEN} made by unknown\n{Fore.white} github = ishrak3232\n discord -\nhttps://discord.gg/JD63T8Wg\nhttps://discord.gg/rponfire\n\ndiscord id - 1064034946928357478")
-
+elif option == "5":
+    print("adding soon.....")
 else:
     print("")
     print(f"{Fore.RED}Not a valid input !\n")
