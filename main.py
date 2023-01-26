@@ -134,7 +134,40 @@ elif option == "6":
    os.sytem("cls")
    print(f" {Fore.GREEN} made by unknown\n{Fore.white} github = ishrak3232\n discord -\nhttps://discord.gg/JD63T8Wg\nhttps://discord.gg/rponfire\n\ndiscord id - 1064034946928357478")
 elif option == "5":
-    print("adding soon.....")
+    print(f"{Fore.RED} [1] {Fore.RESET} generate a proxy and log into it\n{Fore.RED}[2] {Fore.RESET} use custom proxy")
+    rr = input(" >> ")
+    if rr == "1":
+       print("generating proxy....")
+       PROXY = FreeProxy(https=False, anonym=True, rand=True).get()
+       print(f'{Fore.GREEN} got proxy! proxy = '+PROXY)
+       webdriver.DesiredCapabilities.CHROME['proxy']={
+       "httpProxy":PROXY,
+       "ftpProxy":PROXY,
+       "sslProxy":PROXY,
+       "noProxy":None,
+       "proxyType":"MANUAL",
+       "autodetect":False
+       }   
+       driver = webdriver.Chrome()
+       driver.get('http://www.whatsmyip.org/')
+       time.sleep(1.577e+8)
+    elif rr == "2":
+       PROXY = input("proxy : ")
+       print(f'{Fore.GREEN} got proxy! proxy = '+PROXY)
+       webdriver.DesiredCapabilities.CHROME['proxy']={
+       "httpProxy":PROXY,
+       "ftpProxy":PROXY,
+       "sslProxy":PROXY,
+       "noProxy":None,
+       "proxyType":"MANUAL",
+       "autodetect":False
+       }   
+       driver = webdriver.Chrome()
+       driver.get('http://www.whatsmyip.org/')
+       time.sleep(1.577e+8)
+    else:
+       print({f"{Fore.RED} invalid input"})
+
 else:
     print("")
     print(f"{Fore.RED}Not a valid input !\n")
